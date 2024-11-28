@@ -16,4 +16,6 @@ make
 sudo cp lib/lib*.a /usr/lib
 sudo cp -r googletest/include/gtest /usr/include
 sudo cp -r googletest/include/gmock /usr/include
+sudo apt install cpplint
+sudo pip3 install cpplint
 ```
