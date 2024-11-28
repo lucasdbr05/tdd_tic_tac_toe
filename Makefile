@@ -1,9 +1,10 @@
 all: testa_velha.cpp   velha.cpp velha.hpp velha.o
 	g++ -std=c++11 -Wall velha.o testa_velha.cpp -o testa_velha
 	./testa_velha
-	#use comentario se necessario
+
 
 compile: testa_velha.cpp   velha.cpp velha.hpp velha.o
+	./cpplint
 	g++ -std=c++11 -Wall velha.o testa_velha.cpp -o testa_velha
 
 velha.o : velha.cpp velha.hpp
