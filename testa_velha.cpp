@@ -7,7 +7,7 @@ TEST_CASE("Empty hash game", "[CheckTicTacToeResult]") {
         {0, 0, 0},
         {0, 0, 0},
     };
-    REQUIRE(CheckTicTacToeResult(hash) == 0);
+    REQUIRE(CheckTicTacToeResult(hash) == -1);
 }
 
 
