@@ -1,9 +1,14 @@
-#include <gtest/gtest.h>
+#include <catch2/catch_test_macros.hpp>
+#include "velha.hpp"
 
-
-
-int main(int argc, char **argv){
-    ::testing::InitGoogleTest(&argc, argv);
-
-    return RUN_ALL_TESTS();
+TEST_CASE("Empty hash game", "[CheckTicTacToeResult]") {
+    int hash[3][3] = {
+        {0, 0, 0},
+        {0, 0, 0},
+        {0, 0, 0},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 0);
 }
+
+
+
