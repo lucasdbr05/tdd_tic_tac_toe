@@ -3,11 +3,7 @@
 ## Setup
 
 ````sheel
-sudo apt update
-sudo apt install cmake
-
-mkdir build && cd build
-cmake ..
-make 
-ctest
+make all
+make test
+make gcov
 ```
