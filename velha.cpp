@@ -1,7 +1,7 @@
 #include "velha.hpp"
 #include <math.h>
 
-enum Value {
+enum TileValue {
     EMPTY = 0,
     X = 1,
     O = 2,
@@ -23,19 +23,19 @@ struct PlayersFrequency
 };
 
 
-PlayersFrequency countPlayersFrequency(int hash[3][3]){
+PlayersFrequency CountPlayersFrequency(int hash[3][3]){
     PlayersFrequency frequency;
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
-            frequency.x += (hash[i][j]==1);
-            frequency.y += (hash[i][j]==2);
+            frequency.x += (hash[i][j]==TileValue::X);
+            frequency.y += (hash[i][j]==TileValue::O);
         }
     }
 
     return frequency;
 }
 
-bool playerIsWinner(int hash[3][3], int player) {
+bool PlayerIsWinner(int hash[3][3], int player) {
     bool flag = false;
 
     if((hash[0][0]==hash[1][1] && hash[1][1]==hash[2][2]) && hash[1][1] == player) {
@@ -60,14 +60,14 @@ bool playerIsWinner(int hash[3][3], int player) {
 
 
 bool XIsWinner(int hash[3][3]){
-    return playerIsWinner(hash, 1);
+    return PlayerIsWinner(hash, TileValue::X);
 }
 bool OIsWinner(int hash[3][3]){
-    return playerIsWinner(hash, 2);
+    return PlayerIsWinner(hash, TileValue::O);
 }
 
-bool isTie(int hash[3][3]){
-    auto frequency = countPlayersFrequency(hash);
+bool IsTie(int hash[3][3]){ 
+    auto frequency = CountPlayersFrequency(hash);
 
     if((frequency.x + frequency.y == 9) && !(XIsWinner(hash) || OIsWinner(hash)))
         return true;
@@ -75,8 +75,8 @@ bool isTie(int hash[3][3]){
     return false;
 }
 
-bool isImpossibleGame(int hash[3][3]){
-    auto frequency = countPlayersFrequency(hash);
+bool IsImpossibleGame(int hash[3][3]){
+    auto frequency = CountPlayersFrequency(hash);
 
     if(abs(frequency.x - frequency.y) > 1) 
         return true;
@@ -98,20 +98,20 @@ bool isImpossibleGame(int hash[3][3]){
 
 
 int CheckTicTacToeResult(int hash[3][3] ){
-    if(isImpossibleGame(hash)){
-        return -2;
+    if(IsImpossibleGame(hash)){
+        return GameResult::IMPOSSIBLE;
     }
 
-    if(isTie(hash)){
-        return 0;
+    if(IsTie(hash)){
+        return GameResult::TIE;
     }
 
     if(XIsWinner(hash)) {
-        return 1;
+        return GameResult::X_WIN;
     }
     if(OIsWinner(hash)) {
-        return 2;
+        return GameResult::O_WIN;
     }
 
-    return -1;
+    return GameResult::UNDEFINED;
 }
