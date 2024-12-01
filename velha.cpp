@@ -1,5 +1,5 @@
 #include "velha.hpp"
-
+#include <math.h>
 
 enum Value {
     EMPTY = 0,
@@ -16,12 +16,36 @@ enum GameResult {
 };
 
 
+struct PlayersFrequency
+{
+    int x = 0;
+    int y = 0;
+};
+
+
+PlayersFrequency countPlayersFrequency(int hash[3][3]){
+    PlayersFrequency frequency;
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            frequency.x += (hash[i][j]==1);
+            frequency.y += (hash[i][j]==2);
+        }
+    }
+
+    return frequency;
+}
+
+
+
 
 
 
 int CheckTicTacToeResult( int hash[3][3] ){
-	int x_count = 0;
-    int y_count = 0;
+    auto frequency = countPlayersFrequency(hash);
+
+    if(abs(frequency.x - frequency.y) > 1) 
+        return -2;
+    
     bool flag = true;
 
     if((hash[0][0]==hash[1][1] && hash[1][1]!=hash[2][2]) && hash[0][0] != 0) {
