@@ -58,3 +58,30 @@ TEST_CASE("X winner game by column", "[CheckTicTacToeResult]" ) {
     };
     REQUIRE(CheckTicTacToeResult(hash) == 1);
 }
+
+TEST_CASE("O winner game by diagonal", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {2, 0, 0},
+        {1, 2, 1},
+        {0, 0, 2},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
+
+TEST_CASE("O winner game by row", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {2, 2, 2},
+        {1, 1, 0},
+        {0, 1, 0},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
+
+TEST_CASE("O winner game by column", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {1, 2, 0},
+        {1, 2, 1},
+        {2, 2, 0},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 2);
+}
