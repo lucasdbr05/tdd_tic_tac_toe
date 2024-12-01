@@ -15,11 +15,9 @@ enum GameResult {
     O_WIN = 2,
 };
 
-
-struct PlayersFrequency
-{
+struct PlayersFrequency {
     int x = 0;
-    int y = 0;
+    int o = 0;
 };
 
 
@@ -28,7 +26,7 @@ PlayersFrequency CountPlayersFrequency(int hash[3][3]){
     for(int i=0; i<3; i++){
         for(int j=0; j<3; j++){
             frequency.x += (hash[i][j]==TileValue::X);
-            frequency.y += (hash[i][j]==TileValue::O);
+            frequency.o += (hash[i][j]==TileValue::O);
         }
     }
 
@@ -69,7 +67,7 @@ bool OIsWinner(int hash[3][3]){
 bool IsTie(int hash[3][3]){ 
     auto frequency = CountPlayersFrequency(hash);
 
-    if((frequency.x + frequency.y == 9) && !(XIsWinner(hash) || OIsWinner(hash)))
+    if((frequency.x + frequency.o == 9) && !(XIsWinner(hash) || OIsWinner(hash)))
         return true;
 
     return false;
@@ -78,16 +76,16 @@ bool IsTie(int hash[3][3]){
 bool IsImpossibleGame(int hash[3][3]){
     auto frequency = CountPlayersFrequency(hash);
 
-    if(abs(frequency.x - frequency.y) > 1) 
+    if(abs(frequency.x - frequency.o) > 1) 
         return true;
 
     if(XIsWinner(hash) && OIsWinner(hash))
         return true;
 
-    if(XIsWinner(hash) and (frequency.y > frequency.x))
+    if(XIsWinner(hash) and (frequency.o > frequency.x))
         return true;
 
-    if(OIsWinner(hash) and (frequency.x > frequency.y))
+    if(OIsWinner(hash) and (frequency.x > frequency.o))
         return true;
 
     return false;
@@ -98,11 +96,11 @@ bool IsImpossibleGame(int hash[3][3]){
 
 
 int CheckTicTacToeResult(int hash[3][3] ){
-    if(IsImpossibleGame(hash)){
+    if(IsImpossibleGame(hash)) {
         return GameResult::IMPOSSIBLE;
     }
 
-    if(IsTie(hash)){
+    if(IsTie(hash)) {
         return GameResult::TIE;
     }
 
