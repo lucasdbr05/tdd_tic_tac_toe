@@ -40,6 +40,8 @@ PlayersFrequency countPlayersFrequency(int hash[3][3]){
 
 
 
+
+
 int CheckTicTacToeResult( int hash[3][3] ){
     auto frequency = countPlayersFrequency(hash);
 
