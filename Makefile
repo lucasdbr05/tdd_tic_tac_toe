@@ -21,7 +21,7 @@ gcov: testa_velha.cpp   velha.cpp velha.hpp
 	g++ -std=c++17 -Wall -fprofile-arcs -ftest-coverage -c velha.cpp
 	g++ -std=c++17 -Wall -fprofile-arcs -ftest-coverage velha.o testa_velha.cpp -o testa_velha
 	./testa_velha
-	gcov *.cpp	
+	gcov velha.cpp	
 	 
 debug: testa_velha.cpp   velha.cpp velha.hpp 
 	g++ -std=c++17 -Wall -g -c velha.cpp
