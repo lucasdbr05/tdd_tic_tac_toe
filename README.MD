@@ -2,7 +2,7 @@
 
 ## Setup
 
-````sheel
+```sheel
 make all
 make test
 make gcov
