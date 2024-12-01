@@ -32,3 +32,12 @@ TEST_CASE("Impossible game for more than one winner", "[CheckTicTacToeResult]" )
     REQUIRE(CheckTicTacToeResult(hash) == -2);
 } 
  
+
+TEST_CASE("X winner game", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {1, 0, 0},
+        {2, 1, 2},
+        {0, 0, 1},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 1);
+}
