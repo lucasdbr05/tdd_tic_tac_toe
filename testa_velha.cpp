@@ -15,4 +15,15 @@ TEST_CASE( "Empty hash game with undefined result", "[CheckTicTacToeResult]" ) {
 
 
 } 
+
+TEST_CASE( "Impossible game for X and O frequency", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {1, 2, 1},
+        {2, 0, 1},
+        {0, 1, 0},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == -2);
+
+
+} 
  
