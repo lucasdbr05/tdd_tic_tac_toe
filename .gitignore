@@ -2,3 +2,6 @@
 build
 velha.o
 testa_velha
+*.gcno
+*.gcda
+*.gcov

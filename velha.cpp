@@ -36,18 +36,22 @@ PlayersFrequency CountPlayersFrequency(int hash[3][3]) {
 bool PlayerIsWinner(int hash[3][3], int player) {
     bool flag = false;
 
-    if ((hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2]) && hash[1][1] == player) {
+    if ((hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2]) &&
+        hash[1][1] == player) {
         flag = true;
     }
-    if ((hash[0][2] == hash[1][1] && hash[1][1] == hash[2][0]) && hash[1][1] == player) {
+    if ((hash[0][2] == hash[1][1] && hash[1][1] == hash[2][0]) &&
+        hash[1][1] == player) {
         flag = true;
     }
 
     for (int i = 0; i < 3; i++) {
-        if ((hash[i][0] == hash[i][1] && hash[i][1] == hash[i][2]) && hash[i][0] == player) {
+        if ((hash[i][0] == hash[i][1] && hash[i][1] == hash[i][2]) &&
+            hash[i][0] == player) {
             flag = true;
         }
-        if ((hash[0][i] == hash[1][i] && hash[1][i] == hash[2][i]) && hash[0][i] == player) {
+        if ((hash[0][i] == hash[1][i] && hash[1][i] == hash[2][i]) &&
+            hash[0][i] == player) {
             flag = true;
         }
     }
@@ -61,7 +65,8 @@ bool OIsWinner(int hash[3][3]) { return PlayerIsWinner(hash, TileValue::O); }
 bool IsTie(int hash[3][3]) {
     auto frequency = CountPlayersFrequency(hash);
 
-    if ((frequency.x + frequency.o == 9) && !(XIsWinner(hash) || OIsWinner(hash))) {
+    if ((frequency.x + frequency.o == 9) &&
+        !(XIsWinner(hash) || OIsWinner(hash))) {
         return true;
     }
 
@@ -79,11 +84,11 @@ bool IsImpossibleGame(int hash[3][3]) {
         return true;
     }
 
-    if (XIsWinner(hash) and (frequency.o > frequency.x)) {
+    if (XIsWinner(hash) && (frequency.o > frequency.x)) {
         return true;
     }
 
-    if (OIsWinner(hash) and (frequency.x > frequency.o)) {
+    if (OIsWinner(hash) && (frequency.x > frequency.o)) {
         return true;
     }
 
