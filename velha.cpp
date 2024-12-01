@@ -57,6 +57,8 @@ bool playerIsWinner(int hash[3][3], int player) {
     return flag;
 }
 
+
+
 bool XIsWinner(int hash[3][3]){
     return playerIsWinner(hash, 1);
 }
@@ -64,7 +66,14 @@ bool OIsWinner(int hash[3][3]){
     return playerIsWinner(hash, 2);
 }
 
+bool isTie(int hash[3][3]){
+    auto frequency = countPlayersFrequency(hash);
 
+    if((frequency.x + frequency.y == 9) && !(XIsWinner(hash) || OIsWinner(hash)))
+        return true;
+
+    return false;
+}
 
 bool isImpossibleGame(int hash[3][3]){
     auto frequency = countPlayersFrequency(hash);
@@ -87,8 +96,15 @@ int CheckTicTacToeResult(int hash[3][3] ){
         return -2;
     }
 
+    if(isTie(hash)){
+        return 0;
+    }
+
     if(XIsWinner(hash)) {
         return 1;
+    }
+    if(OIsWinner(hash)) {
+        return 2;
     }
     
     bool flag = true;
