@@ -15,8 +15,11 @@ test: testa_velha
 	./testa_velha
 	
 cpplint: testa_velha.cpp   velha.cpp velha.hpp
+	clang-format -i velha.cpp 
+	clang-format -i velha.hpp
+	clang-format -i testa_velha.cpp
 	cpplint   --exclude=catch.hpp  *.*
-	
+
 gcov: testa_velha.cpp   velha.cpp velha.hpp 
 	g++ -std=c++17 -Wall -fprofile-arcs -ftest-coverage -c velha.cpp
 	g++ -std=c++17 -Wall -fprofile-arcs -ftest-coverage velha.o testa_velha.cpp -o testa_velha
