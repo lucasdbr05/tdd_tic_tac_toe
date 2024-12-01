@@ -35,32 +35,71 @@ PlayersFrequency countPlayersFrequency(int hash[3][3]){
     return frequency;
 }
 
+bool playerIsWinner(int hash[3][3], int player) {
+    bool flag = false;
+
+    if((hash[0][0]==hash[1][1] && hash[1][1]!=hash[2][2]) && hash[0][0] == player) {
+        flag = true;
+    }
+    if((hash[0][2]==hash[1][1] && hash[1][1]!=hash[2][0]) && hash[0][0] == player) {
+        flag = true;
+    }
+
+    for(int i=0; i<3; i++){
+        if((hash[i][0]==hash[i][1] && hash[i][1]==hash[i][2]) && hash[i][0] == player) {
+            flag = true;
+        }
+        if((hash[0][i]==hash[1][i] && hash[1][i]==hash[2][i]) && hash[0][i] == player) {
+            flag = true;
+        }
+    }
+
+    return flag;
+}
+
+bool XIsWinner(int hash[3][3]){
+    return playerIsWinner(hash, 1);
+}
+bool OIsWinner(int hash[3][3]){
+    return playerIsWinner(hash, 2);
+}
 
 
 
-
-
-
-
-int CheckTicTacToeResult( int hash[3][3] ){
+bool isImpossibleGame(int hash[3][3]){
     auto frequency = countPlayersFrequency(hash);
 
     if(abs(frequency.x - frequency.y) > 1) 
+        return true;
+
+    if(XIsWinner(hash) && OIsWinner(hash))
+        return true;
+
+    return false;
+}
+
+
+
+
+
+int CheckTicTacToeResult(int hash[3][3] ){
+    if(isImpossibleGame(hash)){
         return -2;
+    }
     
     bool flag = true;
 
-    if((hash[0][0]==hash[1][1] && hash[1][1]!=hash[2][2]) && hash[0][0] != 0) {
+    if((hash[0][0]==hash[1][1] && hash[1][1]==hash[2][2]) && hash[0][0] != 0) {
             flag = false;
         }
-    if((hash[0][2]==hash[1][1] && hash[1][1]!=hash[2][0]) && hash[0][0] != 0) {
+    if((hash[0][2]==hash[1][1] && hash[1][1]==hash[2][0]) && hash[0][0] != 0) {
             flag = false;
         }
     for(int i=0; i<3; i++){
-        if((hash[i][0]==hash[i][1] && hash[i][1]!=hash[i][2]) && hash[i][0] != 0) {
+        if((hash[i][0]==hash[i][1] && hash[i][1]==hash[i][2]) && hash[i][0] != 0) {
             flag = false;
         }
-        if((hash[0][i]==hash[1][i] && hash[1][i]!=hash[2][i]) && hash[0][i] != 0) {
+        if((hash[0][i]==hash[1][i] && hash[1][i]==hash[2][i]) && hash[0][i] != 0) {
             flag = false;
         }
     }
