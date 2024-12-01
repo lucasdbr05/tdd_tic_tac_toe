@@ -28,7 +28,8 @@ TEST_CASE("Impossible game for frequency greater than winner", "[CheckTicTacToeR
         {1, 2, 0},
         {2, 1, 0},
         {2, 2, 1},
-    };int hash2[3][3] = {
+    };
+    int hash2[3][3] = {
         {2, 1, 0},
         {1, 2, 0},
         {1, 1, 2},
