@@ -24,12 +24,17 @@ TEST_CASE("Impossible game for X and O frequency", "[CheckTicTacToeResult]" ) {
 } 
 
 TEST_CASE("Impossible game for frequency greater than winner", "[CheckTicTacToeResult]" ) {
-	int hash[3][3] = {
+	int hash1[3][3] = {
         {1, 2, 0},
         {2, 1, 0},
         {2, 2, 1},
+    };int hash2[3][3] = {
+        {2, 1, 0},
+        {1, 2, 0},
+        {1, 1, 2},
     };
-    REQUIRE(CheckTicTacToeResult(hash) == -2);
+    REQUIRE(CheckTicTacToeResult(hash1) == -2);
+    REQUIRE(CheckTicTacToeResult(hash2) == -2);
 } 
 
 TEST_CASE("Impossible game for more than one winner", "[CheckTicTacToeResult]" ) {
