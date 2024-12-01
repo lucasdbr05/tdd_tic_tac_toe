@@ -38,10 +38,10 @@ PlayersFrequency countPlayersFrequency(int hash[3][3]){
 bool playerIsWinner(int hash[3][3], int player) {
     bool flag = false;
 
-    if((hash[0][0]==hash[1][1] && hash[1][1]!=hash[2][2]) && hash[0][0] == player) {
+    if((hash[0][0]==hash[1][1] && hash[1][1]==hash[2][2]) && hash[1][1] == player) {
         flag = true;
     }
-    if((hash[0][2]==hash[1][1] && hash[1][1]!=hash[2][0]) && hash[0][0] == player) {
+    if((hash[0][2]==hash[1][1] && hash[1][1]==hash[2][0]) && hash[1][1] == player) {
         flag = true;
     }
 
@@ -85,6 +85,10 @@ bool isImpossibleGame(int hash[3][3]){
 int CheckTicTacToeResult(int hash[3][3] ){
     if(isImpossibleGame(hash)){
         return -2;
+    }
+
+    if(XIsWinner(hash)) {
+        return 1;
     }
     
     bool flag = true;

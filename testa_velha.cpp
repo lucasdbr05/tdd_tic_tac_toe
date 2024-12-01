@@ -30,14 +30,31 @@ TEST_CASE("Impossible game for more than one winner", "[CheckTicTacToeResult]" )
         {0, 0, 0},
     };
     REQUIRE(CheckTicTacToeResult(hash) == -2);
-} 
- 
+}  
 
-TEST_CASE("X winner game", "[CheckTicTacToeResult]" ) {
+TEST_CASE("X winner game by diagonal", "[CheckTicTacToeResult]" ) {
 	int hash[3][3] = {
         {1, 0, 0},
         {2, 1, 2},
         {0, 0, 1},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 1);
+}
+
+TEST_CASE("X winner game by row", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {2, 0, 0},
+        {1, 1, 1},
+        {0, 0, 2},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 1);
+}
+
+TEST_CASE("X winner game by column", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {1, 0, 0},
+        {1, 2, 2},
+        {1, 0, 0},
     };
     REQUIRE(CheckTicTacToeResult(hash) == 1);
 }
