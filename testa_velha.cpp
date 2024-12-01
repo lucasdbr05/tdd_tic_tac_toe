@@ -85,3 +85,12 @@ TEST_CASE("O winner game by column", "[CheckTicTacToeResult]" ) {
     };
     REQUIRE(CheckTicTacToeResult(hash) == 2);
 }
+
+TEST_CASE("Tie game", "[CheckTicTacToeResult]" ) {
+	int hash[3][3] = {
+        {1, 2, 1},
+        {2, 2, 1},
+        {1, 1, 2},
+    };
+    REQUIRE(CheckTicTacToeResult(hash) == 0);
+}
