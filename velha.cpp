@@ -95,6 +95,8 @@ bool IsImpossibleGame(int hash[3][3]) {
     return false;
 }
 
+
+
 int CheckTicTacToeResult(int hash[3][3]) {
     if (IsImpossibleGame(hash)) {
         return GameResult::IMPOSSIBLE;
