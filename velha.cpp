@@ -33,25 +33,34 @@ PlayersFrequency CountPlayersFrequency(int hash[3][3]) {
     return frequency;
 }
 
+bool CheckMainDiagonal(int hash[3][3]) {
+    return (hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2]);
+}
+bool CheckSecondaryDiagonal(int hash[3][3]) {
+    return (hash[2][0] == hash[1][1] && hash[1][1] == hash[0][2]);
+}
+bool CheckRow(int hash[3][3], int row) {
+    return (hash[row][0] == hash[row][1] && hash[row][1] == hash[row][2]);
+}
+bool CheckColumn(int hash[3][3], int col) {
+    return (hash[0][col] == hash[1][col] && hash[1][col] == hash[2][col]);
+}
+
 bool PlayerIsWinner(int hash[3][3], int player) {
     bool flag = false;
 
-    if ((hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2]) &&
-        hash[1][1] == player) {
+    if (CheckMainDiagonal(hash) && hash[1][1] == player) {
         flag = true;
     }
-    if ((hash[0][2] == hash[1][1] && hash[1][1] == hash[2][0]) &&
-        hash[1][1] == player) {
+    if (CheckSecondaryDiagonal(hash) && hash[1][1] == player) {
         flag = true;
     }
 
     for (int i = 0; i < 3; i++) {
-        if ((hash[i][0] == hash[i][1] && hash[i][1] == hash[i][2]) &&
-            hash[i][0] == player) {
+        if (CheckRow(hash, i) && hash[i][0] == player) {
             flag = true;
         }
-        if ((hash[0][i] == hash[1][i] && hash[1][i] == hash[2][i]) &&
-            hash[0][i] == player) {
+        if (CheckColumn(hash, i) && hash[0][i] == player) {
             flag = true;
         }
     }
@@ -94,8 +103,6 @@ bool IsImpossibleGame(int hash[3][3]) {
 
     return false;
 }
-
-
 
 int CheckTicTacToeResult(int hash[3][3]) {
     if (IsImpossibleGame(hash)) {
