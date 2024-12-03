@@ -72,7 +72,7 @@ bool XIsWinner(int hash[3][3]) { return PlayerIsWinner(hash, TileValue::X); }
 bool OIsWinner(int hash[3][3]) { return PlayerIsWinner(hash, TileValue::O); }
 
 bool IsTie(int hash[3][3]) {
-    auto frequency = CountPlayersFrequency(hash);
+    PlayersFrequency frequency = CountPlayersFrequency(hash);
 
     if ((frequency.x + frequency.o == 9) &&
         !(XIsWinner(hash) || OIsWinner(hash))) {
