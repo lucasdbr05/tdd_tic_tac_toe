@@ -9,6 +9,7 @@ TEST_CASE("Impossible game for X and O frequency", "[CheckTicTacToeResult]") {
         {2, 0, 1},
         {0, 1, 0},
     };
+
     REQUIRE(CheckTicTacToeResult(hash) == -2);
 }
 
@@ -24,6 +25,7 @@ TEST_CASE("Impossible game for frequency greater than winner",
         {1, 2, 0},
         {1, 1, 2},
     };
+    
     REQUIRE(CheckTicTacToeResult(hash1) == -2);
     REQUIRE(CheckTicTacToeResult(hash2) == -2);
 }
@@ -35,6 +37,7 @@ TEST_CASE("Impossible game for more than one winner",
         {2, 2, 2},
         {0, 0, 0},
     };
+
     REQUIRE(CheckTicTacToeResult(hash) == -2);
 }
 
@@ -49,6 +52,7 @@ TEST_CASE("X winner game by diagonal", "[CheckTicTacToeResult]") {
         {2, 1, 2},
         {1, 0, 0},
     };
+
     REQUIRE(CheckTicTacToeResult(hash1) == 1);
     REQUIRE(CheckTicTacToeResult(hash2) == 1);
 }
@@ -69,6 +73,7 @@ TEST_CASE("X winner game by row", "[CheckTicTacToeResult]") {
         {0, 0, 2},
         {1, 1, 1},
     };
+
     REQUIRE(CheckTicTacToeResult(hash1) == 1);
     REQUIRE(CheckTicTacToeResult(hash2) == 1);
     REQUIRE(CheckTicTacToeResult(hash3) == 1);
@@ -90,6 +95,7 @@ TEST_CASE("X winner game by column", "[CheckTicTacToeResult]") {
         {2, 2, 1,},
         {0, 0, 1,},
     };
+
     REQUIRE(CheckTicTacToeResult(hash1) == 1);
     REQUIRE(CheckTicTacToeResult(hash2) == 1);
     REQUIRE(CheckTicTacToeResult(hash3) == 1);
@@ -106,6 +112,7 @@ TEST_CASE("O winner game by diagonal", "[CheckTicTacToeResult]") {
         {1, 2, 1},
         {2, 0, 1},
     };
+
     REQUIRE(CheckTicTacToeResult(hash1) == 2);
     REQUIRE(CheckTicTacToeResult(hash2) == 2);
 }
@@ -126,6 +133,7 @@ TEST_CASE("O winner game by row", "[CheckTicTacToeResult]") {
         {0, 1, 0},
         {2, 2, 2},
     };
+
     REQUIRE(CheckTicTacToeResult(hash1) == 2);
     REQUIRE(CheckTicTacToeResult(hash2) == 2);
     REQUIRE(CheckTicTacToeResult(hash3) == 2);
@@ -147,6 +155,7 @@ TEST_CASE("O winner game by column", "[CheckTicTacToeResult]") {
         {1, 1, 2,},
         {2, 0, 2,},
     };
+
     REQUIRE(CheckTicTacToeResult(hash1) == 2);
     REQUIRE(CheckTicTacToeResult(hash2) == 2);
     REQUIRE(CheckTicTacToeResult(hash3) == 2);
@@ -158,6 +167,7 @@ TEST_CASE("Tie game", "[CheckTicTacToeResult]") {
         {2, 2, 1},
         {1, 1, 2},
     };
+
     REQUIRE(CheckTicTacToeResult(hash) == 0);
 }
 
@@ -167,6 +177,7 @@ TEST_CASE("Empty hash game with undefined result", "[CheckTicTacToeResult]") {
         {0, 0, 0},
         {0, 0, 0},
     };
+
     REQUIRE(CheckTicTacToeResult(hash) == -1);
 }
 
@@ -186,6 +197,7 @@ TEST_CASE("Hash game with undefined result", "[CheckTicTacToeResult]") {
         {1, 1, 0},
         {2, 0, 2},
     };
+
     REQUIRE(CheckTicTacToeResult(hash1) == -1);
     REQUIRE(CheckTicTacToeResult(hash2) == -1);
     REQUIRE(CheckTicTacToeResult(hash3) == -1);
