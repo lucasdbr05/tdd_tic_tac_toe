@@ -133,7 +133,7 @@ bool IsImpossibleGame(int hash[3][3]) {
 }
 
 /**
- * @brief Check which is the game status
+ * @brief Check what is the game result for a given hash
  * @param  hash data about the game situation
  */
 int CheckTicTacToeResult(int hash[3][3]) {
