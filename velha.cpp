@@ -21,6 +21,8 @@ struct PlayersFrequency {
     int o = 0;
 };
 
+
+// Count the frequency of moves of players in a hash
 PlayersFrequency CountPlayersFrequency(int hash[3][3]) {
     PlayersFrequency frequency;
     for (int i = 0; i < 3; i++) {
@@ -33,19 +35,28 @@ PlayersFrequency CountPlayersFrequency(int hash[3][3]) {
     return frequency;
 }
 
+
+// Check if main diagonal is equal
 bool CheckMainDiagonal(int hash[3][3]) {
     return (hash[0][0] == hash[1][1] && hash[1][1] == hash[2][2]);
 }
+
+// Check if secondary diagonal is equal
 bool CheckSecondaryDiagonal(int hash[3][3]) {
     return (hash[2][0] == hash[1][1] && hash[1][1] == hash[0][2]);
 }
+
+// Check if a row is equal
 bool CheckRow(int hash[3][3], int row) {
     return (hash[row][0] == hash[row][1] && hash[row][1] == hash[row][2]);
 }
+
+// Check if a column is equal
 bool CheckColumn(int hash[3][3], int col) {
     return (hash[0][col] == hash[1][col] && hash[1][col] == hash[2][col]);
 }
 
+// Check if a player is winner
 bool PlayerIsWinner(int hash[3][3], int player) {
     bool flag = false;
 
@@ -71,6 +82,7 @@ bool PlayerIsWinner(int hash[3][3], int player) {
 bool XIsWinner(int hash[3][3]) { return PlayerIsWinner(hash, TileValue::X); }
 bool OIsWinner(int hash[3][3]) { return PlayerIsWinner(hash, TileValue::O); }
 
+// Check if the game is tied
 bool IsTie(int hash[3][3]) {
     PlayersFrequency frequency = CountPlayersFrequency(hash);
 
@@ -82,6 +94,8 @@ bool IsTie(int hash[3][3]) {
     return false;
 }
 
+
+// Check if the game is impossible
 bool IsImpossibleGame(int hash[3][3]) {
     auto frequency = CountPlayersFrequency(hash);
 
