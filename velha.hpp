@@ -1,6 +1,24 @@
 #ifndef VELHA_HPP_
 #define VELHA_HPP_
 
-int CheckTicTacToeResult(int hash[3][3]);
+enum TileValue {
+    EMPTY = 0,
+    X = 1,
+    O = 2,
+};
 
+enum GameResult {
+    IMPOSSIBLE = -2,
+    UNDEFINED = -1,
+    TIE = 0,
+    X_WIN = 1,
+    O_WIN = 2,
+};
+
+struct PlayersFrequency {
+    int x = 0;
+    int o = 0;
+};
+
+int CheckTicTacToeResult(int hash[3][3]);
 #endif  // VELHA_HPP_
