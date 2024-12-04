@@ -46,7 +46,7 @@ bool CheckRow(int hash[3][3], int row) {
 /**
  * @brief  Check if a column is equal
  * @param  hash data about the game situation
- * @param  column current checked column
+ * @param  col current checked column
  */
 bool CheckColumn(int hash[3][3], int col) {
     return (hash[0][col] == hash[1][col] && hash[1][col] == hash[2][col]);

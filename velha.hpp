@@ -30,8 +30,7 @@ bool CheckSecondaryDiagonal(int hash[3][3]);
 
 bool CheckRow(int hash[3][3], int row);
 
-bool CheckColumn(int hash[3][3], int column);
-
+bool CheckColumn(int hash[3][3], int col);
 
 bool PlayerIsWinner(int hash[3][3], int player);
 
