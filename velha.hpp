@@ -21,4 +21,14 @@ struct PlayersFrequency {
 };
 
 int CheckTicTacToeResult(int hash[3][3]);
+PlayersFrequency CountPlayersFrequency(int hash[3][3]);
+bool CheckMainDiagonal(int hash[3][3]);
+bool CheckSecondaryDiagonal(int hash[3][3]);
+bool CheckRow(int hash[3][3], int row);
+bool CheckColumn(int hash[3][3], int column);
+bool PlayerIsWinner(int hash[3][3], int player);
+bool XIsWinner(int hash[3][3]);
+bool OIsWinner(int hash[3][3]);
+bool IsTie(int hash[3][3]);
+bool IsImpossibleGame(int hash);
 #endif  // VELHA_HPP_
