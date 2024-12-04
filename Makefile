@@ -13,6 +13,16 @@ testa_velha: 	testa_velha.cpp   velha.cpp velha.hpp velha.o
 	
 test: testa_velha	
 	./testa_velha
+
+setup: 
+	sudo apt-get install g++
+	sudo apt-get install make
+	sudo apt-get install valgrind
+	sudo apt-get install cppcheck
+	sudo apt-get install clang-format-14
+
+	sudo apt-get install python3-pip
+	sudo pip install cpplint
 	
 cpplint: testa_velha.cpp   velha.cpp velha.hpp
 	clang-format -i velha.cpp 
